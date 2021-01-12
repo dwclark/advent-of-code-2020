@@ -155,6 +155,7 @@ Once again, the original title is a lie, but is left for historical honesty. Thi
 * The biggest win, by *far* was the elimination of object orientation, which means no more CLOS. I have additional thoughts I'll save for the philosophical notes section. All decisions are now in `ecase` statements which are much more compact and can easily share implementation details.
 * The next biggest win was eliminating most of the mutation of the waypoints, positions, and rotation states. This shortened a lot of code and eliminated all of the dynamic variables/constants.
 * Immutability enabled the next big win: abstracting out the play-game from the movement/rotation decisions. Now the decision functions can just work on state passed in, they are pure functions. Immutability enabled this because now the decision functions no longer have to update specific variables, they can just be passed generic position and rotation pairs and operate on them without knowing where they will be stored.
+* The move and rotation code is now 100% shared. I saw this in Norvig's notes, but wasn't planning on even trying to do this initially. However, once all of the cruft was removed, it became obvious that the two games shared more than I initially thought they did.
 * The rotate code is now a single line and was cribbed directly from Norvig's code.
 * Some small savings in realizing that `(setf (values var1 var2...) (function-call...)` is a thing. I could have had the decision functions pass lists back, but using `values` is much more idiomatic.
 
