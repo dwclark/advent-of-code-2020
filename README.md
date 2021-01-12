@@ -148,6 +148,24 @@ This also does show one of the advantages of CLOS over standard OO systems. All 
 
 Here `cell` (a cons cell) contains the symbol representing the function and the delta. So the call to the correct method is fully dynamic because neither the target object nor the method are known until the actual `funcall` call is made. This is possible in other langauges, but it's not as natural or easy. Saving the function symbol in the cons cell uses the same trick as on day 8.
 
+**v2 Addendum**
+
+Once again, the original title is a lie, but is left for historical honesty. This one was a challenge to streamline, but I did learn a lot about making tighter lisp code and I also learned a lot about clever data representation from Norvig's code. The challenge was large because my initial code weighed in at 130 LOC. Norvig's is 37 LOC. My final code is 41 LOC. So how did this happen?
+
+* The biggest win, by *far* was the elimination of object orientation, which means no more CLOS. I have additional thoughts I'll save for the philosophical notes section. All decisions are now in `ecase` statements which are much more compact and can easily share implementation details.
+* The next biggest win was eliminating most of the mutation of the waypoints, positions, and rotation states. This shortened a lot of code and eliminated all of the dynamic variables/constants.
+* Immutability enabled the next big win: abstracting out the play-game from the movement/rotation decisions. Now the decision functions can just work on state passed in, they are pure functions. Immutability enabled with because now that the decision functions no longer have to update specific variables, they can just be passed generic position and rotation pairs and operate on them without knowing where they will be stored.
+* The rotate code is now a single line and was cribbed directly from Norvig's code.
+* Some small savings in realizing that `(setf (values var1 var2...) (function-call...)` is a thing. I could have had the decision functions pass lists back, but using `values` is much more idiomatic.
+
+**Philosophical Note**
+
+My long and meandering initial implementation is really in the [spirit of Pascal](https://www.famousquotes.com/quote/blaise-pascal-quotes-1045873) who said "I didn't have time to write a short letter, so I wrote a long one instead." I wrote the thing on autopilot, trusting that the CLOS engine would wire everything together for me and allow me to solve the problem without understanding it all that well. And, it worked, I got the right answer. In fact, I would even argue there's a certain charm and aesthetic pleasantness to the original code because of its repeating patterns that lead to comfortable regularity. But then you have to ask, it that worth it for 3x the code, even if it is regular?
+
+On one hand, yes it is. Like I said, it was easier (for me) to write because it mostly allowed me to write code without ever understanding the game as a whole. And when you are writing code in a business environment, being able to produce code with an incomplete understanding is not ideal, but it sure can save your job. Plus, anything that lowers the bar so that mere mortals can get the code working is a huge win.
+
+But even with all that, I'm pretty sure it would be better if I were to maintain the second version. Because it's tight and compact, I'm forced to understand it before I touch it. There's no false sense of security hidden behind verbosity and regularity. Plus "regularity" is probably just a nice way of saying "duplication" which everyone agrees is bad in software. Of course, I might still prefer to maintain the original, it turns out that OO is a hell of a drug.
+
 ## [Day 13](src/day-13.lisp) You Really Need Some Math Theory For This One
 
 This day I thought was one of the weakest. It depends on knowing the Chinese Remainder Theorem and knowing that it applies in this case. See the extensive comments in the code for an explanation of what is going on.
