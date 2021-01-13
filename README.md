@@ -207,9 +207,9 @@ Choosing prefix notation was the obvious solution for lisp as the executor can t
 
 **v2 Addendum**
 
-I still had fun doing the first day and I'm glad I learned the basics of the shunting yard algorithmand postfix/prefix math evaluation. However, I was excited to learn about more lisp libraries. I discovered [infix-max](https://github.com/ruricolist/infix-math) which is a series of macros that transform infix math to prefix math (which lisp will then evaluate). That's 99% of the problem. The only remaining part is to play around with precedences, which infix-math makes easy to do.
+I still had fun doing the first day and I'm glad I learned the basics of the shunting yard algorithm and postfix/prefix math evaluation. However, I was excited to learn about more lisp libraries. I discovered [infix-math](https://github.com/ruricolist/infix-math) which is a series of macros that transform infix math to prefix math (which lisp will then evaluate). That's 99% of the problem. The only remaining part is to play around with precedences, which infix-math makes easy to do.
 
-Total LOC savings is pretty dramatic. Version 1 is 93 LOC, while Version 2 is 25 LOC. The biggest chunk of that isn't even the evaluation code, it's the code to save and restore precedences. For comparison Norvig's code is 30 LOC.
+Total LOC savings is pretty dramatic. Version 1 is 93 LOC, while Version 2 is 25 LOC. The biggest part of that isn't even the evaluation code, it's the code to save and restore precedences. For comparison Norvig's code is 30 LOC.
 
 ## [Day 19](src/day-19.lisp) Lisp Can Make Hacks Too
 
