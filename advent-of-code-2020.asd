@@ -5,7 +5,7 @@
   :author "David Clark <daveloper9000@gmail.com>"
   :license  "Apache 2"
   :version "0.0.1"
-  :depends-on ("alexandria" "cl-ppcre" "fare-memoization" "array-operations")
+  :depends-on ("alexandria" "cl-ppcre" "fare-memoization" "array-operations" "infix-math")
   :components ((:file "src/utils")
                (:file "src/day-1" :depends-on ("src/utils"))
                (:file "src/day-1-v2" :depends-on ("src/utils"))
@@ -37,6 +37,7 @@
                (:file "src/day-16" :depends-on ("src/utils"))
                (:file "src/day-17" :depends-on ("src/utils"))
                (:file "src/day-18" :depends-on ("src/utils"))
+               (:file "src/day-18-v2" :depends-on ("src/utils"))
                (:file "src/day-19" :depends-on ("src/utils"))
                (:file "src/day-20" :depends-on ("src/utils"))
                (:file "src/day-21" :depends-on ("src/utils"))
