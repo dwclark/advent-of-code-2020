@@ -205,6 +205,12 @@ This day required the most research for me. I had never made a parser for infix 
 
 Choosing prefix notation was the obvious solution for lisp as the executor can then just use regular lisp `funcall` or `apply` to call the correct math functions (see `execute prefix`). The only thing needed for part 2 was to add a configuration for operator precedences and then use dynamic variables to make the functions behave properly.
 
+**v2 Addendum**
+
+I still had fun doing the first day and I'm glad I learned the basics of the shunting yard algorithmand postfix/prefix math evaluation. However, I was excited to learn about more lisp libraries. I discovered [infix-max](https://github.com/ruricolist/infix-math) which is a series of macros that transform infix math to prefix math (which lisp will then evaluate). That's 99% of the problem. The only remaining part is to play around with precedences, which infix-math makes easy to do.
+
+Total LOC savings is pretty dramatic. Version 1 is 93 LOC, while Version 2 is 25 LOC. The biggest chunk of that isn't even the evaluation code, it's the code to save and restore precedences. For comparison Norvig's code is 30 LOC.
+
 ## [Day 19](src/day-19.lisp) Lisp Can Make Hacks Too
 
 Part 1 turned out to be very straightforward. The input was equivalent to a regex engine with simple rules. So, all that was needed was to convert the spec to some very complex regular expressions and feed those into cl-ppcre.
