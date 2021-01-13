@@ -175,6 +175,12 @@ I thought it was weak because it is plausible that someone would come up with th
 
 Lisp note: this is the first day I used Lisp structures (`defstruct`). They are useful when you need more data organization than just using lists, vectors, maps, and cons cells, but don't need a full blown OO system.
 
+**v2 Addendum**
+
+I didn't really look at what Norvig did. I mainly did cleanup based on notes I kept when I did the project initially. I also cleaned up the code to make it more idiomatic lisp and to add some native common lisp features that make things less verbose. I cleaned up the parsing code, I forgot I ended up doing it twice. The destructuring really made a lot of the code easier to understand, there are now many fewer calls to car/cdr even though the code now makes even more use of cons cells.
+
+I only looked at Norvig's code at the end to get a general idea of what he did. The number of LOC seems comparable. Finally, I no longer use structures in the code.
+
 ## [Day 14](src/day-14.lisp) Lisp Goes Low
 
 Lisp has surprisingly good support for low level bit-vector and bitmask operations. This day makes heavy use of bit-vectors, which is a natural fit since the bit size of the inputs is not an integer multiple of 32 (in that case fixnum/integers would make sense).
