@@ -187,6 +187,16 @@ Lisp has surprisingly good support for low level bit-vector and bitmask operatio
 
 Another nice thing about Lisp is that you never have to worry about integer overflow. While I don't think any of the numbers used in computation here would have overflowed, I never had to work about it.
 
+**v2 Addendum**
+
+I again mostly used Norvig's solution as a target for LOC. My original solution was 115 LOC, the new solution is 52 LOC. Quite a bit less, but Norvig's is in the low/mid 40's. And, I had to cheat a litle in that I moved one of the functions to utils. There is some justification for this, the `bit-vector->integer` function was already there, so it made sense to the reverse operation, `integer->bit-vector` there.
+
+In any case, python really shines with this type of stuff. The ability to chain lots of functions on the same line is definitely a python strength. This is where python as "unix shell replacement" really shows, it's compact in the same way shell scripts are.
+
+**Philosophical Note**
+
+Once again CLOS went away and there is no OO in this code anymore. The amount of ceremony that CLOS added was just too much when you are trying to boil down code to as minimal as possible. I also have to admit that in the original version the OO code never seemed to pay off. Sure, I was able to treat instructions as generic, but the machine itself was so simple that it didn't really pay off in savings. Perhaps you just need a larger codebase for the OO ceremony to be worth the trouble.
+
 ## [Day 15](src/day-15.lisp) Algorithmic Cleverness Beats Optimization Cleverness
 
 This is the first day where you need some algorithmic cleverness to keep track of everything that's happening. The naive approach of saving everything in a list or array works for part-1, but then fails miserably for part-2. The trick is realizing that you only have to remember the past two times you see a number. After that, it's irrelevant, and you can get rid of numbers seen more than 2 turns ago.

@@ -10,7 +10,8 @@
 (defparameter *width* 36)
 
 (defun str->mask-ops (str)
-  (loop for i from 0 below (length str) collect (cons i (digit-char-p (char str i)))))
+  (loop for i from 0 below (length str)
+        collect (cons i (digit-char-p (char str i)))))
 
 (defun parse-instruction (str)
   (do-register-groups (the-mask) ("mask = ([X10]{36})" str)
