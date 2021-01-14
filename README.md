@@ -203,6 +203,12 @@ This is the first day where you need some algorithmic cleverness to keep track o
 
 I made a note to attempt optimizations later. However, the standard optimizations that I did apply didn't help much. Without types and inlining `part-2` runs in 5.5 seconds. After types and inlining, that drops to 4.3 seconds. That's about a 20% reduction, which in my opinion isn't really worth it. Profiling indicates that the problems are in the hash table operations. This indicates that the only way to really speed this up is to either 1) use a better hash table or 2) switch to array storage.
 
+**v2 Addendum**
+
+It was dumb of me to think I needed to store 2 turns of information. This is the case of my getting fixated on a particular representation early on and then coding functions that locked that in place. I only realized this when trying to find the array Norvig was using in his code (there isn't one). I confess I have a hard time thinking though how these games are played/represented.
+
+Now that arrays are gone, along with `aref` calls, the code is substantially faster, shorter, and easier to read. In fact, it consistently takes 3.3 secs on my laptop. That's better than the fully optimized version in v1. It's also faster than Norvig's version. At 25 LOC it's more verbose than Norvig's version too.
+
 ## [Day 16](src/day-16.lisp) Lisp Makes Tedious Things Possible
 
 One of the more tedious days. The parsing was pretty complex and detail oriented. Lots of small functions to try and make the code understandtable, but I was not as successful as I would have liked. 
