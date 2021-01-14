@@ -277,6 +277,10 @@ Because this was a lot of low level programming, and because I guessed (correctl
 
 Because this is all integers and array access, optimizing was straighforward. Put the right optimizer hints and the right type declarations in place and lisp will give you pretty fast code. It's nice to know that if you are forced to write C-like code in lisp that lisp can give you C-like performance as well. Optimization was also straighforward because I was pretty sure that representing a linked list as an array is about as optimal as you can get from an algorithmic perspective. All of those O(n) operations on node based linked lists all become O(1) when it is array based.
 
+**v2 Addendum**
+
+I won't be doing further work on this day. Norvig's solution was more verbose than I expected. Mine is even more verbose, but not ridiculously so. Plus, he did not solve part 2, which was the more interesting problem.
+
 ## [Day 24](src/day-24.lisp) Representation is Key
 
 The key to this puzzle is getting the representation correct. Square grids are straighforward to represent, hexagonal grids are not. So, I spent time [researching how best to do that](https://www.redblobgames.com/grids/hexagons/). Even then, I miscoded the direction functions initially, _even though I was copying them straight from the web page!_.
