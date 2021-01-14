@@ -1,7 +1,7 @@
 (defpackage :utils
   (:use :cl)
-  (:export #:read-file :read-day-file :split-blank-lines #:*input-directory*
-           #:bit-vector->integer))
+  (:export #:read-file :read-day-file :split-blank-lines #:*input-directory* 
+           #:bit-vector->integer #:integer->bit-vector #:power-set))
 
 (in-package :utils)
 
@@ -45,3 +45,13 @@
   (reduce #'(lambda (first-bit second-bit)
               (+ (* first-bit 2) second-bit))
           bit-vector))
+
+(defun integer->bit-vector (width arg)
+  (loop for i from (1- width) downto 0
+        with bitvec = (make-array width :element-type 'bit)
+        with num = arg
+        do (progn
+             (setf (aref bitvec i) (rem num 2))
+             (setf num (floor (/ num 2))))
+        finally (return bitvec)))
+
