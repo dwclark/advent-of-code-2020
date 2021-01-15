@@ -2,7 +2,7 @@
   (:use :cl)
   (:import-from :utils :read-day-file)
   (:import-from :alexandria :curry :hash-table-keys)
-  (:import-from :fare-memoization :memoize :define-memo-function)
+  (:import-from :fare-memoization :memoize)
   (:import-from :cl-ppcre :do-register-groups :split)
   (:export #:part-1 #:part-2 #:parse-bag #:load-bag-rules))
 
