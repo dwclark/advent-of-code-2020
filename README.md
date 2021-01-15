@@ -291,4 +291,6 @@ However, once I got that correct, the rest of the problem was straightforward. I
 
 Once again I was glad to have a REPL. I was having a hard time understanding the puzzle so being able to test and try things out to make sure I was understanding the puzzle was half the battle. Because the REPL made that experimentation easy, it made the day a lot easier. In the end, it was an easier day, which was great. I'm definitely a fan of ending Advent of Code on a easy note. If it had ended with the hardest puzzle, I would probably have finished less likely to try Advent of Code again. 
 
+**v2 Addendum**
 
+Once again, python really lets you express things compactly with generators and enumerators. Since Common Lisp doesn't have those natively, I went with the more lispy solution: recursion. As far as I know, all lisps do tail call elimination. If your's doesn't, the v2 solution will kill your lisp. There is [one more generators](https://github.com/cbeo/gtwiwtg) library for Common Lisp that looks interesting and I may check out.

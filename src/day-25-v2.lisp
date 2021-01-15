@@ -9,18 +9,15 @@
 (defparameter *divisor* 20201227)
 (defparameter *subject-number* 7)
 
-(defun loop-size (public-key)
-  (loop with value = 1
-        for day from 1 to most-positive-fixnum
-        do (if (= public-key value)
-               (return (1- day))
-               (setf value (rem (* value *subject-number*) *divisor*)))))
+(defun compute (val key) (rem (* val key) *divisor*))
 
-(defun make-encryption-key (public-key loop-size)
-  (let ((val 1))
-    (dotimes (n loop-size)
-      (setf val (rem (* val public-key) *divisor*)))
-    val))
+(defun loop-size (public-key &optional (day 0) (value 1))
+  (if (= public-key value) day
+      (loop-size public-key (1+ day) (compute value *subject-number*))))
+
+(defun make-encryption-key (public-key loop-size &optional (val 1))
+  (if (zerop loop-size) val
+      (make-encryption-key public-key (1- loop-size) (compute val public-key))))
 
 (defun part-1 ()
   (make-encryption-key (first *public-keys*) (loop-size (second *public-keys*))))
