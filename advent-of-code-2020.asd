@@ -47,7 +47,8 @@
                (:file "src/day-22" :depends-on ("src/utils"))
                (:file "src/day-23" :depends-on ("src/utils"))
                (:file "src/day-24" :depends-on ("src/utils"))
-               (:file "src/day-25" :depends-on ("src/utils"))))
+               (:file "src/day-25" :depends-on ("src/utils"))
+               (:file "src/day-25-v2" :depends-on ("src/utils"))))
 
 (asdf:defsystem #:advent-of-code-2020-tests
   :description "Advent of Code 2020 Tests"
