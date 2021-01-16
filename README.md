@@ -287,6 +287,16 @@ The key to this puzzle is getting the representation correct. Square grids are s
 
 However, once I got that correct, the rest of the problem was straightforward. It was very similar to day 17, though the neighbor rules were different.
 
+**v2 Addendum**
+
+It looks like Norvig was able to reuse code from previous years or days for solving Life game puzzles. This makes LOC comparisons more difficult. But, I'm fairly certain that Norvig's code is more concise than any of my versions. My third version is quite speedy and is the smallest, so I'll take that as consolation.
+
+The v2 version has four of major changes which makes the code smaller and one change that blows it back up again. By far the biggest change was changing `day-flips` to only investigate tiles it needs to. Norvig's code was much simpler, but since I'm not a python expert (and it's pretty dense python), I studied the problem again. Once again *understanding the actual problem* allowed me to simplify all of the code in `day-flips` and all of the code it calls. In particular, I was able to eliminate all of the min/max computation. The second major change was to store plain symbols for directions instead of function symbols. Third major change was to reduce consing by making walk mutable. It didn't complicate the code by much, but it sure reduced consing. Finally, I was able to eliminate most of the parsing code, this I did get from reading Norvig's code.
+
+The one change that increased the code size was to add optmiziation hints and write custom hash and equal functions because profiling showed that `equalp` was by far the biggest time sink. The first four changes dropped the runtime from 50 sec -> 1 sec. The optimizations pared that down to 0.52 - 0.55 seconds.
+
+I was going to stop there but Norvig's code said he used the axial coordinate system for hexagonal grids. He even provided the same url I did in my code comments. So I went back there to read up. It turns out if I had read just a couple of paragraphs more I would have seen the axial coordinate documentation. Even better, the axial system is virtually identical to the cube coordinates, you just drop the y axis. This allowed me to convert tiles from 3-d arrays to cons cells and reduce the number of operations in `walk!`. I had to stop using `copy-array` and make a custom `copy-tile` function. Finally, I was able to use the more efficient `equal` function in the hash table. The result is that the run time is now 0.46 secs with 2/3 less consing. As always really understand the problem *because good algorithms, especially with fewer computations and less storage, are almost always faster.* Not to mention **simpler**. 
+
 ## [Day 25](src/day-25.lisp) The Finish Line
 
 Once again I was glad to have a REPL. I was having a hard time understanding the puzzle so being able to test and try things out to make sure I was understanding the puzzle was half the battle. Because the REPL made that experimentation easy, it made the day a lot easier. In the end, it was an easier day, which was great. I'm definitely a fan of ending Advent of Code on a easy note. If it had ended with the hardest puzzle, I would probably have finished less likely to try Advent of Code again. 

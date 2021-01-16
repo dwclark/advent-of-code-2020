@@ -89,14 +89,16 @@
 (defun part-1 ()
   (hash-table-count (initial-walk (file->walks))))
 
+(declaim (ftype (function (hash-table grid-tile) fixnum) number-adjacent))
 (defun number-adjacent (table tile)
+  (declare (optimize speed))
   (loop for w in '(w ne e se sw w)
-        summing (if (gethash (walk! w tile) table) 1 0) into total
+        summing (if (gethash (walk! w tile) table) 1 0) into total fixnum
         finally (progn
                   (walk! 'ne tile)
                   (return total))))
 
-(defun flips (tile table new-table)
+(defun day-flip (tile table new-table)
   ;; case #1, tile is black
   (let ((adj (number-adjacent table tile)))
     (if (or (zerop adj) (< 2 adj))
@@ -111,7 +113,7 @@
 (defun day-flips (table)
   (loop with new-table = (fresh-hash-table table)
         for tile being the hash-keys in table
-        do (flips (copy-array tile) table new-table)
+        do (day-flip (copy-array tile) table new-table)
         finally (return new-table)))
 
 (defun part-2 ()
