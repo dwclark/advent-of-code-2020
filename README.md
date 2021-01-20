@@ -30,6 +30,8 @@ Run all of the above commands inside your common lisp environment. And your comm
 
 I'm keeping my original code in place for comparison. All re-worked code will be in files and packages called "day-n-v2", where n is the day.
 
+**Addendum Jan 19, 2021** I just checked in my v2 changes for Day 21. That will be my last set of changes. I think I have learned what I can by reviewing Norvig's code and revising my own. There are a few days left over, but I'll be leaving them as is.
+
 ## [Day 1](src/day-1.lisp) Loops and Getting my Feet Wet
 
 Not much interesting on day one, just a lot of loops. You can solve part-1 with a O(n) complexity by using hash maps or sets to pre-load all of the numbers to search, thus avoiding the second inner loop (the find function). I initially did it that way, but then replaced it with the simpler O(n^2) solution since I was already having to execute part-2 with complexity O(n^3).
