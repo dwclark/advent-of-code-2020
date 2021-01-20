@@ -104,3 +104,4 @@
          (table (possible-allergens groups allergens ingredients))
          (a-list (hash-table-alist table)))
     (format nil "~{~A~^,~}" (mapcar #'car (sort a-list #'string< :key (lambda (c) (symbol-name (cdr c))))))))
+

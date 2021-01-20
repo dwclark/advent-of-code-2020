@@ -251,7 +251,11 @@ In doing part 2 I made heavy use of the REPL as it involved lots of exploration 
 
 It took me a while to figure out that day 21 was yet another backtracking problem. Part of the problem was just understanding what, exactly, was being asked for. The other challenge was that unlike day 20, the inputs here did require significant amounts of backtracking to solve the problem. However, this led to another problem. The slow execution and the large amounts of backtracking had me convinced that I had another infinite loop somewhere.
 
-However, after randomizing the input order, the algorithm would sometimes arrive at a solution very quickly. I finally just let it run with the inputs in the order they are in the file and the algorithm did eventually find a solution. 
+However, after randomizing the input order, the algorithm would sometimes arrive at a solution very quickly. I finally just let it run with the inputs in the order they are in the file and the algorithm did eventually find a solution.
+
+**v2 Addendum**
+
+I reduced the size somewhat. However, I'm not going to try and make the length the same as the python code. I did change the algorithm to use repeated intersections on the ingredients, followed by removing all ingredients that can't possibly be in lists (i.e. they are already a single member of another list. Part-2 changed to reuse the part-1 functionality.
 
 ## [Day 22](src/day-22.lisp) No Unit Tests, Just a REPL
 
