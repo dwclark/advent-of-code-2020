@@ -29,6 +29,7 @@
                (:file "src/day-10-v2" :depends-on ("src/utils"))
                (:file "src/day-11" :depends-on ("src/utils"))
                (:file "src/day-11-v2" :depends-on ("src/utils"))
+               (:file "src/day-11-v3" :depends-on ("src/utils"))
                (:file "src/day-12" :depends-on ("src/utils"))
                (:file "src/day-12-v2" :depends-on ("src/utils"))
                (:file "src/day-13" :depends-on ("src/utils"))

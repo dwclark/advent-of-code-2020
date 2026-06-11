@@ -135,6 +135,11 @@ I thought I would use macros more during Advent of Code. However, I only used th
 * Norivg gave the hint to parametrize the `crowded` variable which allow me to save lots of code.
 * Got rid of all of the little accessor functions. They were an attempt to abstract access to `*grid*`, but with array-operations it's so much easier to just go directly to the grid.
 
+**v3 Addendum** WTF? I started learning Go and wanted to see if I could make a lisp version of the Go code more compact that then Go code. Short answer: it has fewer lines, but more bytes. My version 2 also has fewer lines but is only a bit smaller in bytes.
+
+* Having reviewed the v2 code again, it's more more functional and lispy
+* Writing the Go code was natural as it's naturally loop based and imperative. This doesn't make the most natural lisp code.
+* I suspect that for certain types of problems Go will be easy to write. However the ceiling for compression and abstraction is much lower for Go than it is for Lisp. However, that's probably a good thing for most companies, which is why there are lots more Go jobs than Lisp jobs.
 
 ## [Day 12](src/day-12.lisp) Object Orientation (CLOS)!!!
 

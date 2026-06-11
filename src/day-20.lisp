@@ -1,4 +1,4 @@
-1(defpackage :day-20
+(defpackage :day-20
   (:use :cl)
   (:import-from :utils :read-day-file :split-blank-lines :bit-vector->integer)
   (:import-from :alexandria :copy-array :define-constant)
