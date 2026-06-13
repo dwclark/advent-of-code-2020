@@ -4,6 +4,8 @@
   (:import-from :utils :read-day-file)
   (:export #:part-1 #:part-2))
 
+(in-package :day-11-v3)
+
 (defun seats ()
   (coerce (read-day-file "11") 'vector))
 
