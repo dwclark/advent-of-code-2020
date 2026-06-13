@@ -53,6 +53,10 @@
         (setf (gethash (bit-vector->integer (set-bits addr-vec (comb->conses comb))) memory)
               (bit-vector->integer value))))))
 
+(defun sum-memory (memory)
+  (loop for v being the hash-values in memory
+        summing v))
+
 (defun part-1 ()
   (sum-memory (execute-instructions #'exec-v1 (load-instructions))))
     

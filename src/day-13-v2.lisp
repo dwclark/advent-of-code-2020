@@ -45,6 +45,7 @@
 (defun part-2 ()
   (multiple-value-bind (earliest ids-indexes) (load-terminal)
     (let ((pairs (sieve-pairs ids-indexes)))
+      (format t "~A~%" pairs)
       (if (sieve-legal-p pairs)
           (crt-sieve pairs)
           "sieve is not guaranteed to give the smallest result because divisors are not coprime"))))
